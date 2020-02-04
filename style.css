@@ -1,0 +1,8 @@
+body {
+    position: relative;
+}
+
+.ster {
+    position: absolute;
+    transform-origin: center;
+}
