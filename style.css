@@ -3,6 +3,7 @@ body {
 }
 
 .ster {
+    width: 100px;
     position: absolute;
     transform-origin: center;
 }

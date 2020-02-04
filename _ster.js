@@ -2,9 +2,11 @@ class Ster {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.vx = 1;
+        this.vx = 2;
         this.vy = 1;
-        this.offset = -100;
+        this.offset = -55;
+        this.veerconstante = .05;
+        this.demping = .8;
     }
 
     maken(url) {
@@ -17,12 +19,17 @@ class Ster {
         this.ster.style.top = this.y + 'px';
     }
 
-    verplaatsen(doelX, doelY, i) {
-        this.x = (doelX + this.x) / 10
-        this.y = (doelY + this.y) / 10
-        this.ster.style.left = (this.x - this.offset) + 'px';
-        this.ster.style.top = (this.y - this.offset) + 'px';
-        this.ster.style.transform = 'rotate(' + this.x + i * 3 + 'deg)'
+    verplaats(doelX, doelY, i) {
+        this.vx += (doelX -this.x)*this.veerconstante;
+        this.vy += (doelY -this.y)*this.veerconstante;
+        this.vx *= this.demping;
+        this.vy *= this.demping;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.ster.style.left = this.x + this.offset + 'px';
+        this.ster.style.top = this.y + this.offset + 'px';
+        this.ster.style.transform = 'rotate(' + i + this.x + 'deg)'
+        
     }
 }
 
